@@ -354,13 +354,7 @@ h2 {
 }
 
 .photo-placeholder {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  padding: 24px;
-  text-align: center;
-  color: var(--muted);
+  display: none;
 }
 
 .photo-footer {
