@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selamat Ulang Tahun Baim</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="stars-layer" id="stars-layer" aria-hidden="true"></div>
+  <div class="moon" aria-hidden="true"></div>
+  <div class="rocket" aria-hidden="true">
+    <span class="rocket-trail trail-one"></span>
+    <span class="rocket-trail trail-two"></span>
+    <span class="rocket-trail trail-three"></span>
+    <span class="rocket-body"></span>
+    <span class="rocket-window"></span>
+    <span class="rocket-flame"></span>
+  </div>
+  <div class="page-glow page-glow-left"></div>
+  <div class="page-glow page-glow-right"></div>
+
+  <section class="intro-screen" id="intro-screen">
+    <div class="intro-card">
+      <p class="eyebrow">Special For Baim</p>
+      <h1 class="intro-title">Buka Dulu</h1>
+      <p class="intro-text">Ada sesuatu buat kamu.</p>
+      <div class="intro-actions">
+        <button class="button button-primary" id="open-button" type="button">Buka</button>
+        <button class="button button-secondary dodge-button" id="later-button" type="button">Tutup</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="photo-screen hidden" id="photo-screen">
+    <div class="photo-shell">
+      <p class="eyebrow">Foto Baim</p>
+      <div class="photo-stage">
+        <button class="photo-nav" id="prev-photo-button" type="button" aria-label="Foto sebelumnya">&lt;</button>
+        <div class="photo-frame" id="photo-frame">
+          <img id="gallery-photo" src="assets/images/baim.jpg.jpeg" alt="Foto Baim">
+          <div class="photo-placeholder" id="gallery-placeholder">Foto tidak ditemukan</div>
+        </div>
+        <button class="photo-nav" id="next-photo-button" type="button" aria-label="Foto berikutnya">&gt;</button>
+      </div>
+      <div class="photo-footer">
+        <span class="photo-count" id="gallery-count">1 / 11</span>
+        <button class="button button-primary" id="show-message-button" type="button">Lanjut</button>
+      </div>
+    </div>
+  </section>
+
+  <main class="message-screen hidden" id="message-screen">
+    <div class="message-card">
+      <div class="message-photo-wrap">
+        <div class="message-photo-frame">
+          <img id="message-photo" src="assets/images/baim.jpg.jpeg" alt="Foto Baim">
+        </div>
+      </div>
+      <div class="message-copy" id="message-copy">
+        <p class="eyebrow">Untuk Baim</p>
+        <h2>Selamat ulang tahun yang ke 18</h2>
+        <p class="message-text" id="message-text">
+          Semoga rezeki nya lancar terus dan sehat selalu.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
+  <div class="toast" id="toast" aria-live="polite"></div>
+  <audio id="birthday-audio" preload="auto" loop>
+    <source src="assets/audio/baim-song.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
