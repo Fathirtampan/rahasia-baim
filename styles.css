@@ -313,10 +313,7 @@ h2 {
 }
 
 .photo-stage {
-  display: grid;
-  grid-template-columns: 64px minmax(0, 1fr) 64px;
-  gap: 18px;
-  align-items: center;
+  display: block;
 }
 
 .photo-frame {
@@ -368,9 +365,8 @@ h2 {
 
 .photo-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 16px;
   margin-top: 18px;
 }
 
@@ -381,24 +377,6 @@ h2 {
   border: 1px solid var(--line);
   color: var(--accent-deep);
   font-weight: 700;
-}
-
-.photo-nav {
-  width: 64px;
-  height: 64px;
-  border: 0;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
-  color: #fffaf6;
-  font-size: 1.8rem;
-  cursor: pointer;
-  box-shadow: 0 18px 38px rgba(168, 67, 56, 0.24);
-}
-
-.photo-nav:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-  box-shadow: none;
 }
 
 .message-card {
@@ -599,15 +577,6 @@ h2 {
 }
 
 @media (max-width: 900px) {
-  .photo-stage {
-    grid-template-columns: 1fr;
-  }
-
-  .photo-nav {
-    width: 100%;
-    height: 52px;
-    border-radius: 999px;
-  }
 }
 
 @media (max-width: 640px) {

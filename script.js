@@ -24,9 +24,6 @@ const laterButton = document.querySelector("#later-button");
 const galleryPhoto = document.querySelector("#gallery-photo");
 const galleryPlaceholder = document.querySelector("#gallery-placeholder");
 const galleryCount = document.querySelector("#gallery-count");
-const prevPhotoButton = document.querySelector("#prev-photo-button");
-const nextPhotoButton = document.querySelector("#next-photo-button");
-const showMessageButton = document.querySelector("#show-message-button");
 const messagePhoto = document.querySelector("#message-photo");
 const messageCopy = document.querySelector("#message-copy");
 const messageText = document.querySelector("#message-text");
@@ -43,6 +40,8 @@ let touchCurrentX = 0;
 let isSwiping = false;
 let autoMessageTimer;
 let audioUnlocked = false;
+let openTriggered = false;
+let pendingMusicStart = false;
 
 document.title = `Selamat Ulang Tahun 18, ${config.fullName}`;
 if (messageText) {
@@ -145,14 +144,6 @@ function createStars(total = 28) {
 function updatePhotoCount() {
   if (galleryCount) {
     galleryCount.textContent = `${photoIndex + 1} / ${config.photoSources.length}`;
-  }
-
-  if (prevPhotoButton) {
-    prevPhotoButton.disabled = photoIndex === 0;
-  }
-
-  if (nextPhotoButton) {
-    nextPhotoButton.disabled = photoIndex === config.photoSources.length - 1;
   }
 }
 
@@ -258,9 +249,18 @@ async function playMusic() {
     birthdayAudio.muted = false;
     await birthdayAudio.play();
     audioUnlocked = true;
+    pendingMusicStart = false;
   } catch {
-    showToast("Musik belum bisa diputar otomatis.");
+    pendingMusicStart = true;
   }
+}
+
+function retryMusicStart() {
+  if (!pendingMusicStart) {
+    return;
+  }
+
+  playMusic();
 }
 
 function moveLaterButton() {
@@ -316,18 +316,26 @@ function handleTouchEnd() {
   }
 }
 
+function handleOpenStart() {
+  if (openTriggered) {
+    return;
+  }
+
+  openTriggered = true;
+  playMusic();
+  openPhotoScreen();
+}
+
 setupPhotos();
 createStars();
 
-openButton?.addEventListener("pointerdown", playMusic, { once: true });
-openButton?.addEventListener("click", openPhotoScreen);
+openButton?.addEventListener("click", handleOpenStart);
 laterButton?.addEventListener("mouseenter", moveLaterButton);
 laterButton?.addEventListener("focus", moveLaterButton);
 laterButton?.addEventListener("click", moveLaterButton);
-prevPhotoButton?.addEventListener("click", showPreviousPhoto);
-nextPhotoButton?.addEventListener("click", showNextPhoto);
-showMessageButton?.addEventListener("click", openMessageScreen);
 photoFrame?.addEventListener("touchstart", handleTouchStart, { passive: true });
 photoFrame?.addEventListener("touchmove", handleTouchMove, { passive: true });
 photoFrame?.addEventListener("touchend", handleTouchEnd);
 photoFrame?.addEventListener("touchcancel", handleTouchEnd);
+document.addEventListener("touchstart", retryMusicStart, { passive: true });
+document.addEventListener("click", retryMusicStart);

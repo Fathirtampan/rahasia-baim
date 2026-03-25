@@ -39,16 +39,13 @@
     <div class="photo-shell">
       <p class="eyebrow">Foto Baim</p>
       <div class="photo-stage">
-        <button class="photo-nav" id="prev-photo-button" type="button" aria-label="Foto sebelumnya">&lt;</button>
         <div class="photo-frame" id="photo-frame">
           <img id="gallery-photo" src="assets/images/baim.jpg.jpeg" alt="Foto Baim">
           <div class="photo-placeholder" id="gallery-placeholder">Foto tidak ditemukan</div>
         </div>
-        <button class="photo-nav" id="next-photo-button" type="button" aria-label="Foto berikutnya">&gt;</button>
       </div>
       <div class="photo-footer">
         <span class="photo-count" id="gallery-count">1 / 11</span>
-        <button class="button button-primary" id="show-message-button" type="button">Lanjut</button>
       </div>
     </div>
   </section>
@@ -72,7 +69,7 @@
 
   <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
   <div class="toast" id="toast" aria-live="polite"></div>
-  <audio id="birthday-audio" preload="auto" loop>
+  <audio id="birthday-audio" preload="auto" loop playsinline webkit-playsinline="true">
     <source src="assets/audio/baim-song.mp3" type="audio/mpeg">
   </audio>
 
